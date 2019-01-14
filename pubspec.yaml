@@ -1,8 +1,8 @@
-name: customisable_slider
-description: A new Flutter customisable slider package.
+name: customizable_slider
+description: A new Flutter customizable slider package.
 version: 0.0.1
 author: Ganesh Shirole <ganesh9405@gmail.com>
-homepage: https://github.com/ganeshshirole/customisable_slider
+homepage: https://github.com/ganeshshirole/customizable_slider
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"

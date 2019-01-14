@@ -1,4 +1,4 @@
-import 'package:customisable_slider/customisable_slider.dart';
+import 'package:customizable_slider/customizable_slider.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

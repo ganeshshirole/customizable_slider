@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/customisable_slider.iml" filepath="$PROJECT_DIR$/customisable_slider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customizable_slider.iml" filepath="$PROJECT_DIR$/customizable_slider.iml" />
     </modules>
   </component>
 </project>
