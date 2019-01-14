@@ -2,8 +2,8 @@
 
 A new Flutter customizable_slider package.
 
-![Alt screen1](https://raw.githubusercontent.com/ganeshshirole/customizable_slider/master/screens/screen1.png?raw=true "Slider Screen 1")
-![Alt screen2](https://raw.githubusercontent.com/ganeshshirole/customizable_slider/master/screens/screen2.png?raw=true "Slider Screen 2")
+![Alt screen1](https://raw.githubusercontent.com/ganeshshirole/customizable_slider/master/screens/screen1.png "Slider Screen 1")
+![Alt screen2](https://raw.githubusercontent.com/ganeshshirole/customizable_slider/master/screens/screen2.png "Slider Screen 2")
 
 ## Getting Started
 
