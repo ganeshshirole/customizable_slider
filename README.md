@@ -2,6 +2,9 @@
 
 A new Flutter customisable_slider package.
 
+![Alt screen1](https://raw.githubusercontent.com/ganeshshirole/customisable_slider/master/screens/screen1.png?raw=true "Slider Screen 1")
+![Alt screen2](https://raw.githubusercontent.com/ganeshshirole/customisable_slider/master/screens/screen2.png?raw=true "Slider Screen 2")
+
 ## Getting Started
 
 This project is a starting point for a Dart
