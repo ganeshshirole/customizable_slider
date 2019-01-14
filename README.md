@@ -1,6 +1,6 @@
 # customizable_slider
 
-A new Flutter customizable_slider package.
+A new flutter customizable slider package.
 
 ![Alt screen1](https://raw.githubusercontent.com/ganeshshirole/customizable_slider/master/screens/screen1.png "Slider Screen 1")
 ![Alt screen2](https://raw.githubusercontent.com/ganeshshirole/customizable_slider/master/screens/screen2.png "Slider Screen 2")
