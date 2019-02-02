@@ -7,27 +7,28 @@ import 'package:flutter/material.dart';
 class SliderWidget extends StatefulWidget {
   const SliderWidget(
       {Key key,
-        this.initialPage: 0,
-        this.viewportFraction: 1,
-        this.viewportPadding: const EdgeInsets.all(0),
-        this.viewportRadius: 0,
-        this.constraints: const BoxConstraints.expand(height: 145),
-        @required this.widgets,
-        this.backgroundColor: Colors.transparent,
-        this.animationDuration: const Duration(milliseconds: 300),
-        this.animationCurve: Curves.ease,
-        this.autoPlayDuration: const Duration(seconds: 3),
-        this.autoPlay: true,
-        this.indicatorMainAxisSize: MainAxisSize.min,
-        this.indicatorBackgroundRadius: 5,
-        this.indicatorBackgroundColor: Colors.white54,
-        this.indicatorMargin: const EdgeInsets.only(bottom: 12),
-        this.indicatorPadding: const EdgeInsets.all(0),
-        this.indicatorAlignment: Alignment.bottomCenter,
-        this.dotSize: 6,
-        this.dotMargin: const EdgeInsets.all(2.5),
-        this.dotSelectedColor: Colors.white,
-        this.dotColor: Colors.grey})
+      this.onPosition,
+      this.initialPage: 0,
+      this.viewportFraction: 1,
+      this.viewportPadding: const EdgeInsets.all(0),
+      this.viewportRadius: 0,
+      this.constraints: const BoxConstraints.expand(height: 145),
+      @required this.widgets,
+      this.backgroundColor: Colors.transparent,
+      this.animationDuration: const Duration(milliseconds: 300),
+      this.animationCurve: Curves.ease,
+      this.autoPlayDuration: const Duration(seconds: 3),
+      this.autoPlay: true,
+      this.indicatorMainAxisSize: MainAxisSize.min,
+      this.indicatorBackgroundRadius: 5,
+      this.indicatorBackgroundColor: Colors.white54,
+      this.indicatorMargin: const EdgeInsets.only(bottom: 12),
+      this.indicatorPadding: const EdgeInsets.all(0),
+      this.indicatorAlignment: Alignment.bottomCenter,
+      this.dotSize: 6,
+      this.dotMargin: const EdgeInsets.all(2.5),
+      this.dotSelectedColor: Colors.white,
+      this.dotColor: Colors.grey})
       : assert(initialPage != null),
         assert(viewportFraction != null),
         assert(viewportPadding != null),
@@ -51,6 +52,7 @@ class SliderWidget extends StatefulWidget {
         assert(dotColor != null),
         super(key: key);
 
+  final Function onPosition;
   final int initialPage;
   final double viewportFraction;
   final double viewportRadius;
@@ -92,6 +94,12 @@ class _SliderWidgetState extends State<SliderWidget> {
         initialPage: widget.initialPage,
         viewportFraction: widget.viewportFraction);
 
+    if(widget.onPosition != null) {
+      _controller.addListener(() {
+        widget.onPosition(_controller.page);
+      });
+    }
+
     if (widget.autoPlay) {
       timer = Timer.periodic(widget.autoPlayDuration, (_) {
         if (_controller.page.round() == widget.widgets.length - 1) {
@@ -121,11 +129,11 @@ class _SliderWidgetState extends State<SliderWidget> {
   Widget build(BuildContext context) {
     final List<Widget> listWidgets = widget.widgets
         .map((netWidget) => Padding(
-      padding: widget.viewportPadding,
-      child: ClipRRect(
-          borderRadius: BorderRadius.circular(widget.viewportRadius),
-          child: netWidget),
-    ))
+              padding: widget.viewportPadding,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(widget.viewportRadius),
+                  child: netWidget),
+            ))
         .toList();
 
     return Stack(
@@ -144,7 +152,7 @@ class _SliderWidgetState extends State<SliderWidget> {
           margin: widget.indicatorMargin,
           child: ClipRRect(
             borderRadius:
-            BorderRadius.circular(widget.indicatorBackgroundRadius),
+                BorderRadius.circular(widget.indicatorBackgroundRadius),
             child: Container(
               padding: widget.indicatorPadding,
               color: widget.indicatorBackgroundColor,
@@ -176,20 +184,20 @@ class Indicator extends AnimatedWidget {
 
   Indicator(
       {this.controller,
-        this.itemCount,
-        this.dotSize,
-        this.dotMargin,
-        this.dotColor,
-        this.dotSelectedColor,
-        this.indicatorMainAxisSize})
+      this.itemCount,
+      this.dotSize,
+      this.dotMargin,
+      this.dotColor,
+      this.dotSelectedColor,
+      this.indicatorMainAxisSize})
       : super(listenable: controller);
 
   @override
   Widget build(BuildContext context) {
     return Row(
-        mainAxisSize: indicatorMainAxisSize,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: List<Widget>.generate(itemCount, _buildDot),
+      mainAxisSize: indicatorMainAxisSize,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List<Widget>.generate(itemCount, _buildDot),
     );
   }
 
@@ -201,12 +209,11 @@ class Indicator extends AnimatedWidget {
           height: dotSize,
           width: dotSize,
           color:
-          index == (controller.page != null ? controller.page.round() : 0)
-              ? dotSelectedColor
-              : dotColor,
+              index == (controller.page != null ? controller.page.round() : 0)
+                  ? dotSelectedColor
+                  : dotColor,
         ),
       ),
     );
   }
 }
-
